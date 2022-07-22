@@ -28,6 +28,7 @@ class User(models.Model):
     email = models.CharField(max_length=200)
     age = models.IntegerField()
 
+
 class Profile(models.Model):
     id = models.AutoField(primary_key=True)
     address = models.CharField(max_length=200)

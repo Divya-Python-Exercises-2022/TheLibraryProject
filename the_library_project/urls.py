@@ -18,16 +18,17 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from library.views import BookViewSet, PublisherViewSet, ProfileViewSet, UserViewSet, AuthorViewSet
+from library.views import BookViewSet, PublisherViewSet, ProfileViewSet, UserViewSet, AuthorViewSet, BookApiView
 
 router = DefaultRouter()
 router.register(r'books', BookViewSet)
 router.register(r'publisher', PublisherViewSet)
-router.register('user', UserViewSet)
-router.register('profile', ProfileViewSet)
-router.register('author', AuthorViewSet)
+router.register(r'user', UserViewSet)
+router.register(r'profile', ProfileViewSet)
+router.register(r'author', AuthorViewSet)
 
 urlpatterns = [
+    path('books2', BookApiView.as_view()), # View is added directly in the URL patterns without registering in the router
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
 ]
